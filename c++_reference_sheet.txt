@@ -1,0 +1,188 @@
+-----------------------------simple main example-----------------------
+
+int main()
+{
+	return 0;
+}
+
+
+---------------------------loop and if examples-------------------------------
+
+while((item) </<=/==/!=/>/>= (value))  // loop while statement is true
+{
+}
+
+size_t i;
+for(i = 0; i </<=/ (value); i++)   // (set i start value ; loop while i meets requirements ; i += 1)
+{
+}
+
+if(item </<=/==/!=/>/>= (value))                                       // if true
+{
+}
+else if(item </<=/==/!=/>/>= (value) && item </<=/==/!=/>/>= (value))  // else if true and true
+{
+}
+else if(item </<=/==/!=/>/>= (value) || item </<=/==/!=/>/>= (value))  // else if true or if true
+{
+}
+else                                                                   // everything else
+{
+}
+
+break;                                                                 // break loop
+
+-------------------------------random example---------------------------------
+
+#include <random>
+
+unsigned int (seed name) = std::chrono::system_clock::now().time_since_epoch().count(); // get seed from computer clock
+
+std::default_random_engine (generator name)((seed));    // create generator
+
+std::uniform_int_distribution<int> (distribution name)((lowest range), (highest range))  // set range for random
+
+(int) = (distribution)((generator));    // get random number
+
+
+--------------------------------vector example---------------------------------
+
+#include <vector>
+
+std::vector<(type)> (name);                   // create vector
+
+std::vector< std::vector<(type)> > (name);    // create vector of vectors
+
+std::random_shuffle((vector).begin()+(index), (vector).end()); // shuffle vector
+
+iter_swap((vector).begin() + (index 1), (vector).begin() + (index 2)); // swap vector items
+
+(vector).push_back(item);                     // add item to back of vector
+
+(vector)[(index)] = (value);                  // set vector index value
+
+----------------------------------string example-----------------------------
+
+#include <string>
+
+std::string (name);                       // create string
+
+(string).append((string));                // append to end of string
+
+(string).insert( (index), (string) );     // insert string at index value
+
+------------------------read/write terminal--------------------------
+
+#include <iostream>                     // include package
+
+std::cout << (string/int) << std:endl;  // print to terminal with new line
+
+std::cin >> (string/int);               // recieve from terminal
+
+
+---------------------------read/write file----------------------------
+
+#include <fstream>
+
+std::ifstream fin;                      // create in file stream
+
+fin.open(file name);                    // open file
+	
+fin >> (string/int);                    // retrieve value from file
+
+fin.close();                            // close file
+
+
+std::ofstream fout;                     // create out file stream
+
+fout.open(file name);                   // open file
+
+fout << string/int;                     // write to file
+
+fout.close();                           // close file
+
+---------------------------class.h example----------------------------
+
+#ifndef _CLASSNAME_H_
+#define _CLASSNAME_H_
+
+class (class name)
+{
+public:                                  // for methods
+	(class name)();                  // constructor
+	
+	(return type) (method name)( (type) (value) ); // class method 
+
+virtual (return type) (method name)( (type) (value) ); // inheritance method 
+	
+protected:                               // for inheritance data members
+
+private:                                 // for class only data members
+
+};
+
+#endif /* _CLASSNAME_H_ */
+/* Local Variables: */
+/* mode:c++         */
+/* End:             */
+
+--------------------------class.cpp example---------------------------
+
+#include "(class name).h"                // include .h file
+
+(class name)::(class name)()             // constructor
+   :  (data member)(value),              // set data member values
+{
+}
+
+
+(return type) (class name)::(method name)()    // class method example
+{
+}
+
+------------------------------other examples------------------------------
+
+new                                  // 
+
+const                                // prevents variable from changing
+
+this->                               //
+*this->                              //
+
+(item)&                              // pass by reference
+
+(class)* (name) = new (class);       // create a class pointer
+
+
+-------------------------operator overload examples-------------------------
+
+-------------in .h file-------------
+
+std::ostream& operator<<(std::ostream& os, const Strand& obj);
+
+Strand operator+(const Strand& lhs, const Strand& rhs);
+
+-------------in .cpp file-----------
+
+std::ostream& operator<<(std::ostream& os, const Strand& obj)
+{
+	int i;
+	for(i = 0; i < obj.getSize(); i++)
+	{
+		os << obj.getChar(i);
+	}
+	return os;
+}
+
+Strand operator+(const Strand& lhs, const Strand& rhs)
+{
+	Strand new_s(lhs);
+	size_t i;
+	for(i = 0; i < rhs.size(); i++)
+	{
+		new_s.addChar(rhs.getChar(i));
+	}
+	return new_s;
+}
+
+----------------------------------------------------------------------------------------
